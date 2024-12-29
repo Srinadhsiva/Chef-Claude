@@ -1,0 +1,12 @@
+function handleFormSubmit(event){
+    event.preventDefault() // This line will prevent the page being loaded when ever the form is submitted by onSubmit event. The onSubmit on form instead of input will respond to both button click as well as enter on the keyboard
+}
+
+
+
+<form onSubmit={handleFormSubmit}>
+    <input placeholder="hello">
+
+    </input>
+    <button>add<button>
+</form>

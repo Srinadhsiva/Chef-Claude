@@ -1,0 +1,61 @@
+/* header{
+    background-color: black;
+    display: flex;
+    padding-left: 10px;;
+}
+header p {
+    margin-left:20px;
+}
+main{
+    line-height: 1.5;
+    padding-left: 10px;
+}
+main ul{
+    line-height: 2;
+}
+main ul li::marker{
+    color:skyblue;
+}
+
+
+
+main h1{
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight:300;
+    font-style: normal;
+} */
+
+
+/* Challenge - 3
+ */
+nav{
+    display: flex;
+    background-color: crimson;
+    min-height: 35px;
+    align-items: center;
+    justify-content: center;
+}
+.cards{
+    display: flex;
+    background-color: whitesmoke;
+    align-items: center;
+    justify-content: center;
+    color:black;
+    margin:18px;
+    max-width: 700px;
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+}
+.cards img{
+    width:160px;
+    height:210px;
+    margin-right:10px;
+    border-radius:4px;
+}
+a{
+    margin-left:10px;
+}
+.cards-container{
+    display: flex;
+    justify-content: center;
+}
