@@ -26,5 +26,5 @@ dist-ssr
 
 #components
 components/1-components.css
-components/2-components.jsx
+components/1-components.jsx
 
