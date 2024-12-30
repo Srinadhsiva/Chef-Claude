@@ -1,4 +1,5 @@
 import './2-components.css'
+import React from 'react';
 import { useState } from 'react';
 import { getRecipeFromMistral } from '../ai';
 import ReactMarkdown from 'react-markdown'; 
@@ -15,13 +16,27 @@ function Header() {
 
 
 function Main(){
-    const [ingredients,updateIngredients] = useState([]);
+    const [ingredients,updateIngredients] = useState(['potato','tomato','egg','onions', 'spices']);
     const [article,setAritcle] = useState("");
     const IngredientsList = 
         ingredients.map((ingredient, index)=>{
             return <li key={index}>{ingredient}</li>
     })
    
+
+    //Using useRef
+    const recipeSection = React.useRef(null);
+
+    //Using useEffect for useRef
+    React.useEffect(()=>{
+        if(article.trim()!='' && recipeSection.current != null ){
+            console.log('recipeSection:', recipeSection.current); // Debug
+
+            recipeSection.current.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+    },[article])
+
+
     async function showArticle(){
             const response = await getRecipeFromMistral(ingredients);
             setAritcle(response);
@@ -42,7 +57,7 @@ function Main(){
         <main>
             <form /*onSubmit={HandleFormSubmit}*/ action={HandleFormSubmit}> 
                 <input placeholder="e.g corriander" name='Ingredient'></input>
-                <button>+add Ingredient</button>
+                <button>+add </button>
             </form>
             {ingredients.length > 0 && <section><div className='ingredients-list'>
                 <h2>Ingredients on Hand</h2>
@@ -53,7 +68,7 @@ function Main(){
                 {ingredients.length > 3 && < Recipe /> }
                 {/* < Article /> */}
                 {article && <h2 className='message'>Here is your Recipe</h2>}
-                <div className="ai-response">     
+                <div className="ai-response" ref={recipeSection}>     
                 <ReactMarkdown>{article}</ReactMarkdown>
                 </div>
             </section>

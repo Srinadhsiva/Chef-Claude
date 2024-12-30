@@ -1,10 +1,11 @@
 import { HfInference } from '@huggingface/inference'
-import token from '../../token.js'
+import token from '../token.js'
+
 const SYSTEM_PROMPT = `
-  you are given a list of ingredients. give a recipe that can be made using the ingredients. 
-  i am gonna give your response to react-markdown so make sure it works there 
+You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. 
+.Thank you
 `
-console.log(token.value)
+
 // 🚨👉 ALERT: Read message below! You've been warned! 👈🚨
 // If you're following along on your local machine instead of
 // here on Scrimba, make sure you don't commit your API keys
@@ -16,10 +17,10 @@ console.log(token.value)
 // your API calls can be made. Doing so will keep your
 // API keys private.
 
-
 // Make sure you set an environment variable in Scrimba 
-// for HF_ACCESS_TOKEN  process.env.HF_ACCESS_TOKEN
-const hf = new HfInference(token)
+// for HF_ACCESS_TOKEN
+
+const hf = new HfInference(token.value)
 
 export async function getRecipeFromMistral(ingredientsArr) {
     const ingredientsString = ingredientsArr.join(", ")
@@ -37,7 +38,3 @@ export async function getRecipeFromMistral(ingredientsArr) {
         console.error(err.message)
     }
 }
-
-
-
-
